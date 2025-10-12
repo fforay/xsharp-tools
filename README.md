@@ -34,6 +34,15 @@ From VSCode
 - Type : Extensions: Install from VSIX
 - Select the .vsix file in the explorer
 
+## Compile & Package
+
+Compile with :  
+npm run compile
+
+Create .vsix with :  
+    vsce package
+
+
 ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
