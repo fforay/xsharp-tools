@@ -24,7 +24,7 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "XSharp Tools configuration",
+      "title": "XSharp Tools Settings",
       "properties": {
         "xsharp.showErrors": {
           "type": "boolean",
@@ -58,7 +58,7 @@
       },
       {
         "command": "xsharp.settingsPanel",
-        "title": "XSharp settings"
+        "title": "XSharp Tools Settings"
       }
     ],
     "menus": {

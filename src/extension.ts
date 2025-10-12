@@ -208,7 +208,7 @@ function getSettingsHtml(): string {
       </style>
     </head>
     <body>
-      <h2>XSharp Settings</h2>
+      <h2>XSharp Tools Settings</h2>
       <label><input type="checkbox" id="errors" checked> Show Errors</label>
       <label><input type="checkbox" id="warnings" checked> Show Warnings</label>
       <label><input type="checkbox" id="grouping" checked> Group by file</label>
