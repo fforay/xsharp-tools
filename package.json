@@ -2,7 +2,7 @@
   "name": "xsharp-tools",
   "displayName": "XSharp Tools",
   "description": "Build and Run XSharp Projects from VSCode",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "icon": "xsharp.png",
   "publisher": "XSharp BV",
   "repository": {
@@ -26,17 +26,17 @@
     "configuration": {
       "title": "XSharp Tools Settings",
       "properties": {
-        "xsharp.showErrors": {
+        "xsharp-tools.showErrors": {
           "type": "boolean",
           "default": true,
           "description": "If true, the extension will show errors in the Problems panel."
         },
-        "xsharp.showWarnings": {
+        "xsharp-tools.showWarnings": {
           "type": "boolean",
           "default": true,
           "description": "If true, the extension will show warnings in the Problems panel."
         },
-        "xsharp.groupByFile": {
+        "xsharp-tools.groupByFile": {
           "type": "boolean",
           "default": true,
           "description": "Regroup errors by file in the Problems panel."

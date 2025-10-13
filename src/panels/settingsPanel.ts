@@ -1,7 +1,12 @@
 
+import * as vscode from 'vscode';
 
+export function getSettingsPanelHtml(config: vscode.WorkspaceConfiguration): string {
 
-export function getSettingsPanelHtml(): string {
+  const showErrors = config.get<boolean>('showErrors', true);
+  const showWarnings = config.get<boolean>('showWarnings', true);
+  const groupByFile = config.get<boolean>('groupByFile', true);
+
   return `
     <!DOCTYPE html>
     <html lang="fr">
@@ -15,9 +20,15 @@ export function getSettingsPanelHtml(): string {
     </head>
     <body>
       <h2>XSharp Tools Settings</h2>
-      <label><input type="checkbox" id="errors" checked> Show Errors</label>
-      <label><input type="checkbox" id="warnings" checked> Show Warnings</label>
-      <label><input type="checkbox" id="grouping" checked> Group by file</label>
+      <label>
+      <input type="checkbox" id="errors" ${showErrors ? 'checked' : ''}> Show Errors
+      </label>
+      <label>
+      <input type="checkbox" id="warnings" ${showWarnings ? 'checked' : ''}> Show Warnings
+      </label>
+      <label>
+      <input type="checkbox" id="grouping" ${groupByFile ? 'checked' : ''}> Group by file
+      </label>
 
       <script>
         const vscode = acquireVsCodeApi();
