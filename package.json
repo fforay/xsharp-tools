@@ -2,7 +2,7 @@
   "name": "xsharp-tools",
   "displayName": "XSharp Tools",
   "description": "Build and Run XSharp Projects from VSCode",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "icon": "xsharp.png",
   "publisher": "XSharp BV",
   "repository": {
@@ -59,6 +59,10 @@
       {
         "command": "xsharp.settingsPanel",
         "title": "XSharp Tools Settings"
+      },
+      {
+        "command": "xsharp.configureProject",
+        "title": "Configure XSharp Project"
       }
     ],
     "menus": {
@@ -69,19 +73,24 @@
           "group": "xs_navigation"
         },
         {
-          "command": "xsharp.clearDiagnostics",
-          "when": "resourceExtname == .xsproj",
-          "group": "xs_navigation@2"
-        },
-        {
           "command": "xsharp.runProject",
           "when": "resourceExtname == .xsproj",
           "group": "xs_navigation@1"
         },
         {
+          "command": "xsharp.clearDiagnostics",
+          "when": "resourceExtname == .xsproj",
+          "group": "xs_navigation@2"
+        },
+        {
           "command": "xsharp.settingsPanel",
           "when": "true",
           "group": "xs_navigation@3"
+        },
+                {
+          "command": "xsharp.configureProject",
+          "when": "true",
+          "group": "xs_navigation@4"
         }
       ]
     }
