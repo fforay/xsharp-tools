@@ -1,35 +1,66 @@
 
 
 
-
-export function getConfigProjectHtml(): string {
+export function getConfigProjectHtml(values: Record<string, string>): string {
   return `
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-      <meta charset="UTF-8">
-      <style>
-        body { font-family: sans-serif; padding: 20px; }
-        select { font-size: 1em; padding: 5px; }
-      </style>
-    </head>
+    <html>
     <body>
-      <h2>Choose Dialect</h2>
+      <h2>XSharp Project Settings</h2>
+
+      <label>Dialect:</label>
       <select id="dialect">
-        <option value="Core">Core</option>
-        <option value="VisualObjects">VisualObjects</option>
-        <option value="FoxPro">FoxPro</option>
-        <option value="Harbour">Harbour</option>
-        <option value="XBase">XBase</option>
+        ${renderOptions(['Core', 'VO', 'Vulcan', 'FoxPro', 'Harbour', 'XPP'], values.dialect)}
       </select>
+
+      <br><br>
+      <label>Output Type:</label>
+      <select id="outputType">
+        ${renderOptions(['Exe', 'Library'], values.outputType)}
+      </select>
+
+      <br><br>
+      <label>
+        <input type="checkbox" id="nullable" ${values.nullable === 'enable' ? 'checked' : ''}>
+        Enable Nullable
+      </label>
+
+      <br><br>
+      <button id="reset">Reset</button>
+      <button id="save">Save</button>
 
       <script>
         const vscode = acquireVsCodeApi();
-        document.getElementById('dialect').addEventListener('change', e => {
-          vscode.postMessage({ setting: 'dialect', value: e.target.value });
+        const state = {
+          dialect: "${values.dialect}",
+          outputType: "${values.outputType}",
+          nullable: "${values.nullable}"
+        };
+        vscode.setState(state);
+
+        document.getElementById('reset').addEventListener('click', () => {
+          document.getElementById('dialect').value = state.dialect;
+          document.getElementById('outputType').value = state.outputType;
+          document.getElementById('nullable').checked = state.nullable === 'enable';
+        });
+
+        document.getElementById('save').addEventListener('click', () => {
+          const dialect = document.getElementById('dialect').value;
+          const outputType = document.getElementById('outputType').value;
+          const nullable = document.getElementById('nullable').checked ? 'enable' : 'disable';
+
+          vscode.postMessage({
+            command: 'saveSettings',
+            values: { dialect, outputType, nullable }
+          });
         });
       </script>
     </body>
     </html>
   `;
+}
+
+function renderOptions(options: string[], selected: string): string {
+  return options.map(opt =>
+    `<option value="${opt}"${opt === selected ? ' selected' : ''}>${opt}</option>`
+  ).join('\n');
 }
