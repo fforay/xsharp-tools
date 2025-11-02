@@ -26,7 +26,12 @@ export function registerConfigProjectCommand(context: vscode.ExtensionContext) {
         const initialValues = {
             dialect: props.get('Dialect') ?? 'Core',
             outputType: props.get('OutputType') ?? 'Exe',
-            nullable: props.get('Nullable') ?? 'disable'
+            nullable: props.get('Nullable') ?? 'disable',
+            lateBinding: props.get('LB') ?? 'false',
+            caseSensitive: props.get('CS') ?? 'false',
+            zeroBasedArrays: props.get('AZ') ?? 'false',
+            enforceSelf: props.get('EnforceSelf') ?? 'false',
+            allowDot: props.get('Allowdot') ?? 'false'
         };
 
 
@@ -56,6 +61,11 @@ function updateProjectXml(xmlText: string, values: Record<string, string>): stri
     group.Dialect = values.dialect;
     group.OutputType = values.outputType;
     group.Nullable = values.nullable;
+    group.LB = values.lateBinding;
+    group.CS = values.caseSensitive;
+    group.AZ = values.zeroBasedArrays;
+    group.EnforceSelf = values.enforceSelf;
+    group.Allowdot = values.allowDot;
 
     const builder = new XMLBuilder({ ignoreAttributes: false, format: true });
     return builder.build(parsed);
