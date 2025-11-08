@@ -29,7 +29,8 @@ GroupByFile   : Group Errors and Warnings by File.
 
 ## Installation
 
-Adapt with the current vsix filename.
+Go to the [Releases](https://github.com/fforay/xsharp-tools/releases) and get the lastest **.vsix** file.  
+Adapt the procedure with the current vsix filename.
 
 From the CLI, run:   
 code --install-extension xsharp-tools-0.1.0.vsix
