@@ -2,7 +2,7 @@
   "name": "xsharp-tools",
   "displayName": "XSharp Tools",
   "description": "Build and Run XSharp Projects from VSCode",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "icon": "xsharp.png",
   "publisher": "XSharp BV",
   "repository": {
@@ -123,6 +123,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "fast-xml-parser": "^5.3.0"
+    "fast-xml-parser": "^5.3.0",
+    "vscode-languageclient": "^9.0.1"
   }
 }

@@ -12,6 +12,9 @@ import { registerRunCommand } from './commands/runCommand';
 import { registerToggleWarnings } from './commands/toggleWarnings';
 import { registerSettingsPanelCommand } from './commands/settingsPanelCommand';
 import { registerConfigProjectCommand } from './commands/configProjectCommand';
+import { registerLSPClient } from './lsp/lspClient';
+import { deactivateLSPClient } from './lsp/lspClient';
+import { register } from 'module';
 
 export let diagnosticCollection: vscode.DiagnosticCollection;
 
@@ -31,12 +34,14 @@ export function activate(context: vscode.ExtensionContext) {
 
   registerConfigProjectCommand(context);
 
-
+  registerLSPClient(context);
 }
 
 export function deactivate() {
   diagnosticCollection.clear();
   diagnosticCollection.dispose();
+
+  deactivateLSPClient();
 }
 
 
