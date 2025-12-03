@@ -22,7 +22,8 @@ export let diagnosticCollection: vscode.DiagnosticCollection;
 export function activate(context: vscode.ExtensionContext) {
   diagnosticCollection = vscode.languages.createDiagnosticCollection('xsharp');
   console.log('XSharp extension activated');
-
+  registerLSPClient(context);
+  
   registerBuildCommand(context);
   registerRunCommand(context);
 
@@ -34,7 +35,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   registerConfigProjectCommand(context);
 
-  registerLSPClient(context);
+
 }
 
 export function deactivate() {

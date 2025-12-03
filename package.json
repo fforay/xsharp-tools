@@ -2,7 +2,7 @@
   "name": "xsharp-tools",
   "displayName": "XSharp Tools",
   "description": "Build and Run XSharp Projects from VSCode",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "icon": "xsharp.png",
   "publisher": "XSharp BV",
   "repository": {
@@ -20,9 +20,28 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:xsharp"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
+    "languages": [
+      {
+        "id": "xsharp",
+        "aliases": [
+          "XSharp",
+          "xsharp"
+        ],
+        "extensions": [
+          ".prg",
+          ".ch",
+          ".xs",
+          ".xsc",
+          ".xsprg",
+          ".xsproj"
+        ]
+      }
+    ],
     "configuration": {
       "title": "XSharp Tools Settings",
       "properties": {
