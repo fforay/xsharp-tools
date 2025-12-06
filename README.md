@@ -12,8 +12,7 @@ Be carefull that the **FolderName** and the **ProjectName** must be the same nam
 The result of the build will appear in the *Problems* tab of Visual Studio Code.  
 - You can define some settings for your **.xsproj** file (more to come)  
 
-- Starting from Version 0.4.0, the package integrate a basic LSP Client that communicates with the xsharp-lsp-server. The installer (.vsix) will contain the XSharpLanguageServer.exe. If you want to build yourself, you will need to **build** that project and copy the **publish**ed result in the server folder.
-
+- Starting from Version 0.4.0, the package integrate a basic LSP Client that communicates with the [xsharp-lsp-server](https://github.com/fforay/xsharp-lsp-server). The installer (.vsix) will contain the XSharpLanguageServer.exe. The server must be **published** as a self-contained EXE and put into the **server** folder before creating the vsix file.
 
 ## Requirements
 
@@ -50,6 +49,8 @@ From VSCode
 - Select the .vsix file in the explorer
 
 ## Compile & Package the extension
+
+The LSP server must be "published" as a self-contained EXE and put into the **server** folder before creating the vsix file
 
 Compile with :  
 npm run compile
