@@ -31,12 +31,10 @@ GroupByFile   : Group Errors and Warnings by File.
 ## Hidden LSP Server settings
 
 If you want to track down what the LSP Server is doing, you can log some of its work.  
-- Go to the Extension installation folder (should be in C:/Users/"yourLogin"/.vscode/extension/xsharp bv.xsharp-tools.x.x.x)
-- Go to src/lsp
-- Open the lspClient.ts file
-- Around lines 43, you should find the launch command.
-- Fill the **args: [""]** to point to a temporary folder, like **args: ["C:/temp"]**
-- Run VSCode. You should now have **XSharpLSPYYYYMMDD.log** file in that folder. It will contains some informations about the LSP Server work.
+
+The Language Server will search for an Environment Variable called **XSHARPLSP_LOG_PATH**.  
+If the var doesn't exist, nothing will be logged.
+If the var indicates a folder, you should find a **XSharpLSPYYYYMMDD.log** file in that folder. It will contains some informations about the LSP Server work.
 
 ## Installation
 
