@@ -37,7 +37,8 @@ export function getSettingsPanelHtml(config: vscode.WorkspaceConfiguration): str
           input.addEventListener('change', () => {
             vscode.postMessage({
               setting: input.id === 'grouping' ? 'groupByFile' :
-                       input.id === 'errors' ? 'showErrors' : 'showWarnings',
+                       input.id === 'errors' ? 'showErrors' : 
+                       input.id === 'warnings' ? 'showWarnings' : '',
               value: input.checked
             });
           });

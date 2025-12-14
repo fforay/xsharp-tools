@@ -13,10 +13,10 @@ export function registerToggleWarnings(context: vscode.ExtensionContext) {
       context.subscriptions.push(statusItem);
     
       const toggleWarningsCommand = vscode.commands.registerCommand('xsharp.toggleWarnings', () => {
-        const config = vscode.workspace.getConfiguration('xsharp');
+        const config = vscode.workspace.getConfiguration('xsharp-tools');
         const current = config.get<boolean>('showWarnings', true);
-        config.update('showWarnings', !current, vscode.ConfigurationTarget.Global);
-    
+        config.update('showWarnings', !current, vscode.ConfigurationTarget.Workspace);
+
         statusItem.text = `$(filter) XSharp: Warnings ${!current ? 'ON' : 'OFF'}`;
       });
 
