@@ -30,7 +30,10 @@ export function registerLSPClient(context: vscode.ExtensionContext) {
         documentSelector: [{ scheme: 'file', language: 'xsharp' }],
         synchronize: {
             // Notify the server about file changes to '.prg' files contained in the workspace
-            fileEvents: workspace.createFileSystemWatcher('**/*.prg')
+            fileEvents: [
+            workspace.createFileSystemWatcher('**/*.prg'),
+            workspace.createFileSystemWatcher('**/*.prgx')
+            ]
         }
     };
 

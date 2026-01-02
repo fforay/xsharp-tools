@@ -16,7 +16,7 @@ export function registerRunCommand(context: vscode.ExtensionContext) {
       vscode.window.showErrorMessage('No Folder open.');
       return;
     }
-
+    vscode.workspace.saveAll();
     const cwd = workspaceFolders[0].uri.fsPath;
 
     vscode.window.showInformationMessage('Compiling XSharp project…');

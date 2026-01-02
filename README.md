@@ -53,9 +53,11 @@ From VSCode
 The LSP server must be "published" as a self-contained EXE and put into the **server** folder before creating the vsix file
 
 Compile with :  
-npm run compile
+
+    npm run compile
 
 Create .vsix with :  
+
     vsce package
 
 
