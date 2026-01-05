@@ -2,7 +2,7 @@
   "name": "xsharp-tools",
   "displayName": "XSharp Tools",
   "description": "Build and Run XSharp Projects from VSCode",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "icon": "xsharp.png",
   "publisher": "XSharp BV",
   "repository": {
@@ -74,7 +74,8 @@
       },
       {
         "command": "xsharp.runProject",
-        "title": "Run XSharp Project"
+        "title": "Run XSharp Project",
+        "icon": "$(play)"
       },
       {
         "command": "xsharp.settingsPanel",
@@ -112,8 +113,48 @@
           "when": "true",
           "group": "xs_navigation@4"
         }
+      ],
+      "editor/title/run": [
+        {
+          "command": "xsharp.runProject",
+          "when": "resourceLangId == xsharp",
+          "group": "navigation"
+        }
       ]
-    }
+    },
+    "debuggers": [
+      {
+        "type": "xsharp",
+        "label": "XSharp Runner",
+        "languages": [
+          "xsharp"
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [],
+            "properties": {}
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "xsharp",
+            "request": "launch",
+            "name": "Run XSharp Program"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "XSharp: Run Project",
+            "description": "Run the current XSharp project",
+            "body": {
+              "type": "xsharp",
+              "request": "launch",
+              "name": "Run XSharp Program"
+            }
+          }
+        ]
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -143,6 +184,8 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@vscode/debugadapter": "^1.68.0",
+    "@vscode/debugprotocol": "^1.68.0",
     "fast-xml-parser": "^5.3.0",
     "vscode-languageclient": "^9.0.1"
   }

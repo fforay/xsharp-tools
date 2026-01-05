@@ -23,7 +23,7 @@ export function registerRunCommand(context: vscode.ExtensionContext) {
 
     exec('dotnet build', { cwd }, (error, stdout, stderr) => {
       diagnosticCollection.clear();
-      parseBuildErrors(stdout); // ← Ton parser existant
+      parseBuildErrors(stdout); // Parsing errors from stdout
 
       if (error) {
         vscode.window.showErrorMessage('Errors compiling XSharp project. Running cancelled');
@@ -32,7 +32,7 @@ export function registerRunCommand(context: vscode.ExtensionContext) {
 
       vscode.window.showInformationMessage("Compiling XSharp Project successfull. Running app…");
 
-      // Créer ou réutiliser le terminal
+      // Creat or ReUse terminal
       if (!xsharpRunTerminal || xsharpRunTerminal.exitStatus !== undefined) {
         xsharpRunTerminal = vscode.window.createTerminal({
           name: 'XSharp Application',

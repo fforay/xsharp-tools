@@ -15,6 +15,8 @@ import { registerConfigProjectCommand } from './commands/configProjectCommand';
 import { registerLSPClient } from './lsp/lspClient';
 import { deactivateLSPClient } from './lsp/lspClient';
 import { register } from 'module';
+import { registerLaunchConfig } from './commands/launchConfig';
+import { registerDebugAdapter } from './commands/debugAdapter';
 
 export let diagnosticCollection: vscode.DiagnosticCollection;
 
@@ -23,7 +25,10 @@ export function activate(context: vscode.ExtensionContext) {
   diagnosticCollection = vscode.languages.createDiagnosticCollection('xsharp');
   console.log('XSharp extension activated');
   registerLSPClient(context);
-  
+
+  registerLaunchConfig(context);
+  registerDebugAdapter(context);
+
   registerBuildCommand(context);
   registerRunCommand(context);
 
@@ -35,7 +40,9 @@ export function activate(context: vscode.ExtensionContext) {
 
   registerConfigProjectCommand(context);
 
-
+  if (!vscode.workspace.getConfiguration("launch").get("configurations")) {
+    vscode.commands.executeCommand("xsharp.createLaunchConfig");
+  }
 }
 
 export function deactivate() {
@@ -44,6 +51,9 @@ export function deactivate() {
 
   deactivateLSPClient();
 }
+
+
+
 
 
 
