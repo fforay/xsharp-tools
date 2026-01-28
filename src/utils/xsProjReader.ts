@@ -15,7 +15,8 @@ export class xsProjReader {
     if (!propertyGroup || typeof propertyGroup !== 'object') {
       this.values = {};
     } else {
-      this.values = propertyGroup;
+
+      this.values = this.normalizePropertyGroup(propertyGroup);
     }
 
   }
@@ -25,7 +26,7 @@ export class xsProjReader {
   }
 
   public get(key: string): string | undefined {
-    return this.values[key];
+    return this.values[key.toLowerCase()];
   }
 
   public getBool(key: string, defaultValue = false): boolean {
@@ -41,5 +42,24 @@ export class xsProjReader {
   public getDouble(key: string, defaultValue = 0): number {
     const val = parseFloat(this.get(key) ?? '');
     return isNaN(val) ? defaultValue : val;
+  }
+
+  private normalizePropertyGroup(group: any): Record<string, string> {
+    const result: Record<string, string> = {};
+
+    for (const [key, value] of Object.entries(group)) {
+      const lower = key.toLowerCase();
+
+      if (typeof value === "string") {
+        result[lower] = value;
+      } else if (Array.isArray(value)) {
+        // On prend la première valeur ou on concatène selon ton besoin
+        result[lower] = String(value[0]);
+      } else {
+        result[lower] = String(value);
+      }
+    }
+
+    return result;
   }
 }

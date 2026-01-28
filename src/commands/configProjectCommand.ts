@@ -26,14 +26,22 @@ export function registerConfigProjectCommand(context: vscode.ExtensionContext) {
         const initialValues = {
             dialect: props.get('Dialect') ?? 'Core',
             outputType: props.get('OutputType') ?? 'Exe',
-            nullable: props.get('Nullable') ?? 'disable',
+            
             lateBinding: props.get('LB') ?? 'false',
+            namedArgs: props.get('namedargs') ?? 'false',
+            unsafeCode: props.get('unsafe') ?? 'false',
             caseSensitive: props.get('CS') ?? 'false',
+            initLocals: props.get('initlocals') ?? 'false',
+            overflowEx: props.get('ovf') ?? 'false',
             zeroBasedArrays: props.get('AZ') ?? 'false',
             enforceSelf: props.get('EnforceSelf') ?? 'false',
-            allowDot: props.get('Allowdot') ?? 'false'
+            allowDot: props.get('Allowdot') ?? 'false',
+            nullable: props.get('Nullable') ?? 'disable',
+            enforceVirtualOverride: props.get('enforceoverride') ?? 'disable',
+            allowOldStyle: props.get('allowoldstyleassignments') ?? 'disable',
+            modernSyntax: props.get('modernsyntax') ?? 'disable'
+            
         };
-
 
         panel.webview.html = getConfigProjectHtml(initialValues);
 
@@ -60,12 +68,20 @@ function updateProjectXml(xmlText: string, values: Record<string, string>): stri
     }
     group.Dialect = values.dialect;
     group.OutputType = values.outputType;
-    group.Nullable = values.nullable;
+    
     group.LB = values.lateBinding;
+    group.namedargs = values.namedArgs;
+    group.unsafe = values.unsafeCode;
     group.CS = values.caseSensitive;
+    group.initLocals = values.initlocals;
+    group.ovf = values.overflowEx;
     group.AZ = values.zeroBasedArrays;
     group.EnforceSelf = values.enforceSelf;
     group.Allowdot = values.allowDot;
+    group.Nullable = values.nullable;
+    group.enforceoverride = values.enforceVirtualOverride;
+    group.allowoldstyleassignments = values.allowOldStyle;
+    group.modernsyntax = values.modernSyntax;
 
     const builder = new XMLBuilder({ ignoreAttributes: false, format: true });
     return builder.build(parsed);

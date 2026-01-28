@@ -13,10 +13,10 @@ class XSharpDebugSession extends DebugSession {
     }
 
     async launchRequest(response: any, args: any) {
-        // On réutilise ta commande existante
+        // ReUse Existing command to run the project
         await vscode.commands.executeCommand("xsharp.runProject");
 
-        // On termine immédiatement la session
+        // and close
         this.sendEvent(new TerminatedEvent());
         this.sendResponse(response);
     }
