@@ -19,7 +19,7 @@ The result of the build will appear in the *Problems* tab of Visual Studio Code.
 You must have the latest XSharp Language version installed.  
 You can get it here : http://www.xsharp.eu  
 
-It is good also to install the [X# Lang extension](https://marketplace.visualstudio.com/items?itemName=InfomindsAG.xsharp-lang) in order to have Syntax Highlighting.
+It is good also to install the [X# Lang extension](https://marketplace.visualstudio.com/items?itemName=InfomindsAG.xsharp-lang) in order to have Syntax Highlighting, if you want more options.
 
 ## Extension Settings
 

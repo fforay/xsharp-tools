@@ -12,6 +12,7 @@ import { registerRunCommand } from './commands/runCommand';
 import { registerToggleWarnings } from './commands/toggleWarnings';
 import { registerSettingsPanelCommand } from './commands/settingsPanelCommand';
 import { registerConfigProjectCommand } from './commands/configProjectCommand';
+import { registerOpenFolderCommand } from './commands/openFolderCommand';
 import { registerLSPClient } from './lsp/lspClient';
 import { deactivateLSPClient } from './lsp/lspClient';
 import { register } from 'module';
@@ -35,6 +36,8 @@ export function activate(context: vscode.ExtensionContext) {
   registerClearDiagnostics(context);
 
   registerToggleWarnings(context);
+
+  registerOpenFolderCommand(context);
 
   registerSettingsPanelCommand(context);
 

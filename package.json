@@ -2,7 +2,7 @@
   "name": "xsharp-tools",
   "displayName": "XSharp Tools",
   "description": "Build and Run XSharp Projects from VSCode",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "icon": "xsharp.png",
   "publisher": "XSharp-BV",
   "repository": {
@@ -18,7 +18,7 @@
     "vscode": "^1.104.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages"
   ],
   "activationEvents": [
     "onLanguage:xsharp"
@@ -84,6 +84,10 @@
       {
         "command": "xsharp.configureProject",
         "title": "Configure XSharp Project"
+      },
+      {
+        "command": "xsharp.openFolderOfActiveFile",
+        "title": "Open Folder of Active File"
       }
     ],
     "menus": {
@@ -119,6 +123,13 @@
           "command": "xsharp.runProject",
           "when": "resourceLangId == xsharp",
           "group": "navigation"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "xsharp.openFolderOfActiveFile",
+          "group": "navigation",
+          "when": "resourceScheme == 'file'"
         }
       ]
     },
