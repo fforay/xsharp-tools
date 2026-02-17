@@ -2,7 +2,7 @@
   "name": "xsharp-tools",
   "displayName": "XSharp Tools",
   "description": "Build and Run XSharp Projects from VSCode",
-  "version": "0.4.7",
+  "version": "0.4.9",
   "icon": "xsharp.png",
   "publisher": "XSharp-BV",
   "repository": {
@@ -90,32 +90,44 @@
         "title": "Open Folder of Active File"
       }
     ],
+    "submenus": [
+      {
+        "id": "xstools.submenu",
+        "label": "XSharp Tools"
+      }
+    ],
     "menus": {
       "explorer/context": [
         {
+          "submenu": "xstools.submenu",
+          "group": "xs_navigation"
+        }
+      ],
+      "xstools.submenu": [
+        {
           "command": "xsharp.buildProject",
           "when": "resourceExtname == .xsproj",
-          "group": "xs_navigation"
+          "group": "xssub_navigation"
         },
         {
           "command": "xsharp.runProject",
           "when": "resourceExtname == .xsproj",
-          "group": "xs_navigation@1"
+          "group": "xssub_navigation@1"
         },
         {
           "command": "xsharp.clearDiagnostics",
           "when": "resourceExtname == .xsproj",
-          "group": "xs_navigation@2"
+          "group": "xssub_navigation@2"
         },
         {
           "command": "xsharp.settingsPanel",
           "when": "true",
-          "group": "xs_navigation@3"
+          "group": "xssub_navigation@3"
         },
         {
           "command": "xsharp.configureProject",
           "when": "true",
-          "group": "xs_navigation@4"
+          "group": "xssub_navigation@4"
         }
       ],
       "editor/title/run": [
