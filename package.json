@@ -27,6 +27,10 @@
   "contributes": {
     "languages": [
       {
+        "id": "xml",
+        "extensions": [".xsproj"]
+      },
+      {
         "id": "xsharp",
         "aliases": [
           "XSharp",
@@ -38,7 +42,6 @@
           ".xs",
           ".xsc",
           ".xsprg",
-          ".xsproj",
           ".prgx"
         ]
       }
